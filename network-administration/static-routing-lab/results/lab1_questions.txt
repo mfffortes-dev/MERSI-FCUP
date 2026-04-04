@@ -1,0 +1,144 @@
+LAB: Static Routing and Network Analysis
+
+Legend:
+outRes  - Command output
+capRes  - Packet capture (Wireshark/tcpdump)
+confRes - Configuration commands
+texRes  - Textual explanation / analysis
+
+
+==================================================
+1. CONNECTIVITY
+==================================================
+
+1.a
+Traceroute from Term2 to each interface of RLin
+Type: outRes
+
+
+1.b
+Traceroute from Term1 to each interface of Term2 under the following conditions:
+
+1.b.i
+RCis2 WITHOUT route to network 170.2.0.0/16
+Type: outRes
+
+1.b.ii
+RCis2 WITH route to network 170.2.0.0/16 via RCis1
+Type: outRes + confRes
+
+1.b.iii
+RCis2 WITH route to network 170.2.0.0/16 via RLin
+Type: outRes
+
+
+1.c
+Turn OFF RCis1 (simulate failure) and repeat previous tests (1.b)
+Type: outRes
+
+NOTE:
+RCis1 must remain OFF for the rest of the lab
+
+
+1.d
+Explain what happens in each case of 1.c
+Type: texRes
+
+
+1.e
+Based on previous results, identify general conditions where dynamic routing is advantageous
+Type: texRes
+
+
+1.f
+Traceroute from Term2 to Term1 under the same three conditions of 1.b
+Type: outRes
+
+
+1.g
+Based on previous results, would dynamic routing help traceroute succeed?
+Type: texRes
+
+
+1.h
+Configure RCis2 with route to 170.2.0.0/16 via RLin
+Type: confRes
+
+
+1.i
+Start capture on link Term2 <-> 192.180.40.0/24
+
+Perform traceroute from Term2 to a NON-EXISTENT IP in 170.2.0.0/16
+Repeat traceroute (output should differ)
+
+Type: outRes + capRes
+
+
+1.i.ii
+Explain why traceroute output is different
+Type: texRes
+
+
+==================================================
+2. ARP
+==================================================
+
+Start capture on link Term2 <-> switch (192.180.40.0/24)
+
+
+2.a
+Run:
+ping -c 1 192.180.40.55
+Capture traffic
+Type: capRes
+
+
+2.b
+Repeat for:
+192.180.40.3
+Type: capRes
+
+
+2.c
+Explain ARP and ICMP packets observed
+Include:
+- ARP resolution
+- timeouts
+- retransmissions
+
+Type: texRes
+
+
+==================================================
+3. TCP ANALYSIS (SSH)
+==================================================
+
+Goal:
+Capture TCP packets with:
+- PUSH flag active
+- IP packet length < 128 bytes
+
+Perform SSH from Term1 to:
+192.180.30.44 (Term2)
+
+
+3.a
+Use tcpdump on Term2:
+tcpdump -l -n -i any <filter>
+
+Provide:
+- filter used (confRes)
+- capture (capRes)
+
+
+3.b
+Use Wireshark on Term1 network
+
+Provide:
+- display filter used (confRes)
+- capture (capRes)
+
+
+3.c
+Explain how to calculate IP payload size
+Type: texRes
