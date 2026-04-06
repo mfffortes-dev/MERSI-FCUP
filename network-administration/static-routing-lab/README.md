@@ -15,16 +15,6 @@ The lab focuses on the configuration and analysis of static routing in a multi-n
 - Understand limitations of static routing and motivation for dynamic routing
 
 
-## Technologies Used
-- GNS3
-- Linux
-- Cisco IOS
-- Wireshark
-- traceroute
-- tcpdump
-- VMware
-
-
 ## Topology
 The lab topology consists of:
 
@@ -95,7 +85,7 @@ The topology is implemented using Ethernet switches in GNS3 to correctly model s
     - Establish SSH communication between Term1 and Term2 for traffic generation
 
 
-## Technologies Used
+## Technologies/Tools Used
 - GNS3 (with GNS3 VM)
 - VMware Workstation
 - Alpine Linux (hosts and Linux router)
@@ -103,6 +93,7 @@ The topology is implemented using Ethernet switches in GNS3 to correctly model s
 - Wireshark
 - tcpdump
 - traceroute
+
 
 ## Skills Demonstrated
 - Static routing configuration (Linux & Cisco)
